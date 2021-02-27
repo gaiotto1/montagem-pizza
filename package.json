@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1"
   },
@@ -21,10 +22,7 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ],
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-    }
+    ]
   },
   "browserslist": {
     "production": [
@@ -39,6 +37,7 @@
     ]
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "eslint": "^7.20.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.22.1",
