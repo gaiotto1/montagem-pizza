@@ -14,7 +14,7 @@ const StepsMenu = ({ page }) => (
     </ContainerLink>
     <ContainerLink>
       <Link to="/passo1">
-        Escolha o tamnho
+        Escolha o tamanho
       </Link>
       {page === 1 ? (
         <span style={{ opacity: 1, backgroundColor: '#04d361' }} />

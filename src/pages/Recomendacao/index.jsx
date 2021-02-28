@@ -23,7 +23,7 @@ const Recomendacao = () => (
       <img src={imgPizza} alt="pizza" />
     </ContainerPizza>
 
-    <Button onClick={() => { console.log('ok'); }}>Confirmar Pedido</Button>
+    <Button>Confirmar Pedido</Button>
   </ContainerGeneral>
 );
 
