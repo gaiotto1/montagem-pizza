@@ -1,5 +1,15 @@
 import React from 'react';
 
-const Passo1 = () => <h1>Passo1</h1>;
+import StepsMenu from '../../components/StepsMenu';
+
+import ContainerGeneral from './styles';
+import Title from '../../components/Title';
+
+const Passo1 = () => (
+  <ContainerGeneral>
+    <StepsMenu page={1} />
+    <Title text="Escolha o tamanho da sua pizza." />
+  </ContainerGeneral>
+);
 
 export default Passo1;
