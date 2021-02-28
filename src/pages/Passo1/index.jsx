@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import StepsMenu from '../../components/StepsMenu';
 
-import { ContainerGeneral, ContainerTamanhos, Item } from './styles';
+import { ContainerGeneral, Sizes } from './styles';
 import Title from '../../components/Title';
 
 const Passo1 = () => {
@@ -30,13 +30,13 @@ const Passo1 = () => {
       <StepsMenu page={1} />
       <Title text="Escolha o tamanho da sua pizza." />
 
-      <ContainerTamanhos>
+      <Sizes>
         {sizes.map((e) => (
-          <Item key={e.id}>
+          <button key={e.id} type="button">
             <p>{e.name}</p>
-          </Item>
+          </button>
         ))}
-      </ContainerTamanhos>
+      </Sizes>
     </ContainerGeneral>
   );
 };
