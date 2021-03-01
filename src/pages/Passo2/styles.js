@@ -4,7 +4,7 @@ import { shade } from 'polished';
 export const ContainerGeneral = styled.div`
   width: 100%;
   max-width: 630px;
-  float: right;
+  margin: auto;
 `;
 
 export const ContainerMassas = styled.div`

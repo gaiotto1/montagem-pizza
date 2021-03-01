@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const ContainerGeneral = styled.div`
   width: 100%;
   max-width: 630px;
-  float: right;
+  margin: auto;
 `;
 
 export const Pizzas = styled.div`
