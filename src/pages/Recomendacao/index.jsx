@@ -12,11 +12,11 @@ const Recomendacao = () => (
   <ContainerGeneral>
     <StepsMenu page={0} />
 
-    <Title text="Recomendação do dia:" />
+    <Title text="A recomendação do dia é:" />
 
     <Description
       name="Alcatra com cheddar - Tam. G"
-      desc="Molho de tomate, alcatra, mussarela, cheddar, azeitonas e orégano."
+      desc="Ingredientes: Molho de tomate, alcatra, mussarela, cheddar, azeitonas e orégano."
     />
 
     <ContainerPizza>
