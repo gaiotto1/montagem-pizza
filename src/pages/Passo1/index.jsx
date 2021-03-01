@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
+import api from '../../services/api';
 
 import StepsMenu from '../../components/StepsMenu';
 
@@ -8,21 +10,20 @@ import Title from '../../components/Title';
 const Passo1 = () => {
   const [sizes, setSizes] = useState([]);
 
+  async function getTamanhos() {
+    try {
+      const responseTamanhos = await api.get('tamanhos');
+
+      if (responseTamanhos.data) {
+        setSizes(responseTamanhos.data);
+      }
+    } catch (error) {
+      toast.error('Falha ao buscar os dados.');
+    }
+  }
+
   useEffect(() => {
-    setSizes([
-      {
-        id: 1,
-        name: 'P',
-      },
-      {
-        id: 2,
-        name: 'M',
-      },
-      {
-        id: 3,
-        name: 'G',
-      },
-    ]);
+    getTamanhos();
   }, []);
 
   return (
