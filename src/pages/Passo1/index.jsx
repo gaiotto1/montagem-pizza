@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import updatePedido from '../../store/modules/pedido/actions';
 import api from '../../services/api';
 
 import StepsMenu from '../../components/StepsMenu';
@@ -8,6 +11,9 @@ import { ContainerGeneral, Sizes } from './styles';
 import Title from '../../components/Title';
 
 const Passo1 = () => {
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const { pedido } = useSelector((state) => state.pedido);
   const [sizes, setSizes] = useState([]);
 
   async function getTamanhos() {
@@ -22,6 +28,14 @@ const Passo1 = () => {
     }
   }
 
+  function setTamanho(tamanho) {
+    dispatch(updatePedido({
+      ...pedido,
+      tamanho,
+    }));
+    history.push('/passo2');
+  }
+
   useEffect(() => {
     getTamanhos();
   }, []);
@@ -33,7 +47,7 @@ const Passo1 = () => {
 
       <Sizes>
         {sizes.map((e) => (
-          <button key={e.id} type="button">
+          <button key={e.id} type="button" onClick={() => setTamanho(e)}>
             <p>{e.name}</p>
           </button>
         ))}

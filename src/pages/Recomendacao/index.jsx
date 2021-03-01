@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import updatePedido from '../../store/modules/pedido/actions';
@@ -11,6 +12,7 @@ import Title from '../../components/Title';
 import Description from '../../components/Description';
 
 const Recomendacao = () => {
+  const history = useHistory();
   const [recomendacao, setRecomendacao] = useState(null);
   const dispatch = useDispatch();
 
@@ -71,6 +73,9 @@ const Recomendacao = () => {
       if (response.data && recebePontos) {
         toast.success(`Parabéns, você recebeu ${pontos} ponto(s) para utilizar em seu próximo pedido.`);
       }
+      setTimeout(() => {
+        history.push('/obrigado');
+      }, 4000);
     } catch {
       toast.error('Falha ao salvar o pedido.');
     }

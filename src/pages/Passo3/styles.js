@@ -13,7 +13,7 @@ export const Pizzas = styled.div`
   flex-wrap: wrap;
   padding-top: 20px;
 
-  div {
+  button {
     width: 30%;
     height: auto;
     display: flex;
@@ -24,6 +24,8 @@ export const Pizzas = styled.div`
     transition: all .4s;
     padding: 1.5%;
     border-radius: 5px;
+    border: none;
+    background-color: #FBFAFB;
 
     &:hover {
       background-color: #F8F5F8;

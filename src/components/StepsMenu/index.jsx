@@ -36,6 +36,14 @@ const StepsMenu = ({ page }) => (
         <span style={{ opacity: 1, backgroundColor: '#04d361' }} />
       ) : (<span />)}
     </ContainerLink>
+    <ContainerLink>
+      <Link to="obrigado">
+        Obrigado
+      </Link>
+      {page === 4 ? (
+        <span style={{ opacity: 1, backgroundColor: '#04d361' }} />
+      ) : (<span />)}
+    </ContainerLink>
     <LineDiv />
   </Container>
 );

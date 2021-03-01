@@ -1,6 +1,9 @@
 /* eslint-disable import/no-dynamic-require */
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import updatePedido from '../../store/modules/pedido/actions';
 import api from '../../services/api';
 
 import StepsMenu from '../../components/StepsMenu';
@@ -9,6 +12,9 @@ import { ContainerGeneral, Pizzas } from './styles';
 import Title from '../../components/Title';
 
 const Passo3 = () => {
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const { pedido } = useSelector((state) => state.pedido);
   const [menu, setMenu] = useState([]);
 
   async function getRecheios() {
@@ -23,6 +29,14 @@ const Passo3 = () => {
     }
   }
 
+  function setRecheio(recheio) {
+    dispatch(updatePedido({
+      ...pedido,
+      recheio,
+    }));
+    history.push('/obrigado');
+  }
+
   useEffect(() => {
     getRecheios();
   }, []);
@@ -34,11 +48,11 @@ const Passo3 = () => {
 
       <Pizzas>
         {menu.map((e) => (
-          <div key={e.id}>
+          <button key={e.id} type="button" onClick={() => { setRecheio(e); }}>
             <img alt={e.name} src={e.src} />
             <p>{e.name}</p>
             <p>{e.desc}</p>
-          </div>
+          </button>
         ))}
       </Pizzas>
     </ContainerGeneral>

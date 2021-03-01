@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import updatePedido from '../../store/modules/pedido/actions';
 import api from '../../services/api';
 
 import StepsMenu from '../../components/StepsMenu';
@@ -8,6 +11,9 @@ import { ContainerGeneral, ContainerMassas, Item } from './styles';
 import Title from '../../components/Title';
 
 const Passo2 = () => {
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const { pedido } = useSelector((state) => state.pedido);
   const [massas, setMassas] = useState([]);
 
   async function getMassas() {
@@ -22,6 +28,14 @@ const Passo2 = () => {
     }
   }
 
+  function setMassa(massa) {
+    dispatch(updatePedido({
+      ...pedido,
+      massa,
+    }));
+    history.push('/passo3');
+  }
+
   useEffect(() => {
     getMassas();
   }, []);
@@ -33,7 +47,7 @@ const Passo2 = () => {
 
       <ContainerMassas>
         {massas.map((e) => (
-          <Item key={e.id}>
+          <Item key={e.id} onClick={() => { setMassa(e); }}>
             <p>{e.name}</p>
           </Item>
         ))}
