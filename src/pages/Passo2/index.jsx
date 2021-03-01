@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import updatePedido from '../../store/modules/pedido/actions';
+import * as ActionPedido from '../../store/modules/pedido/actions';
 import api from '../../services/api';
 
 import StepsMenu from '../../components/StepsMenu';
@@ -29,10 +29,18 @@ const Passo2 = () => {
   }
 
   function setMassa(massa) {
-    dispatch(updatePedido({
+    dispatch(ActionPedido.updatePedido({
       ...pedido,
       massa,
     }));
+    dispatch(ActionPedido.updateMenu(
+      {
+        passo1: true,
+        passo2: true,
+        passo3: true,
+        obrigado: true,
+      },
+    ));
     history.push('/passo3');
   }
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
-import updatePedido from '../../store/modules/pedido/actions';
+import * as ActionPedido from '../../store/modules/pedido/actions';
 import api from '../../services/api';
 
 import { ContainerGeneral, ContainerPizza, Button } from './styles';
@@ -58,11 +58,20 @@ const Recomendacao = () => {
 
   async function confirm() {
     try {
-      dispatch(updatePedido({
+      dispatch(ActionPedido.updatePedido({
         tamanho: recomendacao.tamanho,
         massa: recomendacao.massa,
         recheio: recomendacao.recheio,
       }));
+
+      dispatch(ActionPedido.updateMenu(
+        {
+          passo1: true,
+          passo2: false,
+          passo3: false,
+          obrigado: true,
+        },
+      ));
 
       toast.success('Pedido salvo com sucesso');
 
@@ -83,7 +92,7 @@ const Recomendacao = () => {
 
   useEffect(() => {
     addRecomendacao();
-    dispatch(updatePedido({}));
+    dispatch(ActionPedido.updatePedido({}));
   }, []);
 
   return (

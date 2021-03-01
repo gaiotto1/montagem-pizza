@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
-// import updatePedido from '../../store/modules/pedido/actions';
+import { useDispatch } from 'react-redux';
+import * as ActionPedido from '../../store/modules/pedido/actions';
 
 import StepsMenu from '../../components/StepsMenu';
 
@@ -8,9 +8,14 @@ import { ContainerGeneral } from './styles';
 import Title from '../../components/Title';
 
 const Obrigado = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   useEffect(() => {
-    // dispatch(updatePedido({}));
+    dispatch(ActionPedido.updateMenu({
+      passo1: false,
+      passo2: false,
+      passo3: false,
+      obrigado: true,
+    }));
   }, []);
 
   return (
