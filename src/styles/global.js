@@ -13,6 +13,7 @@ export default createGlobalStyle`
   }
 
   #root {
+    font-family: Roboto;
     max-width: 1020px;
     margin: auto;
     padding: 80px 20px;
