@@ -27,6 +27,7 @@
           "tron"
         ]
       }
-    ]
+    ],
+    "no-param-reassign": "off"
   }
 }

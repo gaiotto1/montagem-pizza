@@ -70,5 +70,9 @@
     "tamanhoId": 2,
     "massaId": 3,
     "pontos": 150
+  },
+  "validaPontos": {
+    "recebePontos": true,
+    "pontos": 150
   }
 }

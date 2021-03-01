@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import updatePedido from '../../store/modules/pedido/actions';
 import api from '../../services/api';
 
 import { ContainerGeneral, ContainerPizza, Button } from './styles';
@@ -10,6 +12,7 @@ import Description from '../../components/Description';
 
 const Recomendacao = () => {
   const [recomendacao, setRecomendacao] = useState(null);
+  const dispatch = useDispatch();
 
   async function addRecomendacao() {
     let massa = null;
@@ -51,8 +54,31 @@ const Recomendacao = () => {
     }
   }
 
+  async function confirm() {
+    try {
+      dispatch(updatePedido({
+        tamanho: recomendacao.tamanho,
+        massa: recomendacao.massa,
+        recheio: recomendacao.recheio,
+      }));
+
+      toast.success('Pedido salvo com sucesso');
+
+      const response = await api.get('validaPontos');
+
+      const { recebePontos, pontos } = response.data;
+
+      if (response.data && recebePontos) {
+        toast.success(`Parabéns, você recebeu ${pontos} ponto(s) para utilizar em seu próximo pedido.`);
+      }
+    } catch {
+      toast.error('Falha ao salvar o pedido.');
+    }
+  }
+
   useEffect(() => {
     addRecomendacao();
+    dispatch(updatePedido({}));
   }, []);
 
   return (
@@ -70,7 +96,7 @@ const Recomendacao = () => {
         <img src={recomendacao?.recheio.src} alt={recomendacao?.recheio.name} />
       </ContainerPizza>
 
-      <Button>Confirmar Pedido</Button>
+      <Button onClick={() => { confirm(); }}>Pedir a pizza do dia</Button>
     </ContainerGeneral>
   );
 };
