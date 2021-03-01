@@ -65,12 +65,10 @@
       "desc": "Molho apimentado de carne seca, mussarela, pimentão, cebola, pimenta, azeitonas e orégano."
     }
   ],
-  "recomendacoes": [
-    {
-      "recheioId": 2,
-      "tamanhoId": 2,
-      "massaId": 3,
-      "pontos": 150
-    }
-  ]
+  "recomendacao": {
+    "recheioId": 2,
+    "tamanhoId": 2,
+    "massaId": 3,
+    "pontos": 150
+  }
 }

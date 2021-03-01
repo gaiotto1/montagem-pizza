@@ -4,6 +4,7 @@ import { shade } from 'polished';
 export const ContainerGeneral = styled.div`
   width: 100%;
   max-width: 630px;
+  margin-bottom: 50px;
   float: right;
   display: flex;
   justify-content: center;
